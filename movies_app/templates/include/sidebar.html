@@ -37,20 +37,20 @@
 <!-- //discounts -->
 <!-- reviews -->
 <div class="customer-rev left-side my-4">
-    <h3 class="sear-head editContent">Рейтинг</h3>
+    <h3 class="sear-head editContent"></h3>
     <ul class="w3layouts-box-list">
         <li>
-            <a href="#">
+            {% comment %} <a href="#">
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="editContent">5.0</span>
-            </a>
+            </a> {% endcomment %}
         </li>
         <li>
-            <a href="#">
+            {% comment %} <a href="#">
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
                 <span class="fa fa-star" aria-hidden="true"></span>
@@ -87,10 +87,10 @@
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="fa fa-star-o" aria-hidden="true"></span>
                 <span class="editContent">2.5</span>
-            </a>
+            </a> {% endcomment %}
         </li> 
-        <li>
+        <div>
           {% get_last_movies count=3 %}
-        </li>
+        </div>
     </ul>  
 </div>

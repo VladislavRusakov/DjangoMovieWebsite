@@ -21,7 +21,7 @@ class MovieView(GenreYear, ListView):
     """Список фильмов"""
     model = Movie
     queryset = Movie.objects.filter(draft=False)
-    paginate_by = 3
+    paginate_by = 6
 
 
 class MovieDetailView(GenreYear, DetailView):
