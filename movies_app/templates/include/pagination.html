@@ -29,7 +29,7 @@
     {% if page_obj.has_next %}
         {% if page_obj.number|add:'4' < page_obj.paginator.num_pages %}
             <li class="pagination__item pagination__item--dots">
-                    <a href="?{{ q }}{{ genre }}{{ year }}page={{ page_obj.next_page_number|add:'3' }}">
+                    <a href="?{{ q }}{{ genre }}{{ year }}page={{ page_obj.next_page_number|add:'3' }} #home">
                 <span class="pagination__link">• • •</span>
                 </a>
             </li>

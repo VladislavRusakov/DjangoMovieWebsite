@@ -26,12 +26,12 @@
 </head>
 <body>
 <div id="page" class="page">
-    <div class="main-banner bg {% block header %}  {% endblock header %}" id="home">
+    <div class="main-banner bg {% block header %}  {% endblock header %}">
         {% include 'include/header.html' %}
     </div>
-    <ol class="breadcrumb editContent">
+    <ol class="breadcrumb editContent"  id="home">
         <li class="breadcrumb-item">
-            <a href="/" class="editContent">Home</a>
+            <a href="#home" class="editContent" >Home</a>
         </li>
         <li class="breadcrumb-item active editContent">Single Page</li>
     </ol>
