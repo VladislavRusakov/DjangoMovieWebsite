@@ -1,10 +1,10 @@
 from django.db.models import Q
-from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
-from .models import Movie, Category, Actor, Genre, Rating
+from .models import Movie, Actor, Genre, Rating
 from .forms import ReviewForm, RatingForm
 
 
@@ -14,7 +14,7 @@ class GenreYear:
         return Genre.objects.all()
 
     def get_years(self):
-        return Movie.objects.filter(draft=False).values("year").order_by("-year")
+        return Movie.objects.filter(draft=False).values("year").order_by("-year").distinct()
 
 
 class MovieView(GenreYear, ListView):
@@ -70,7 +70,7 @@ class FilterMoviesView(GenreYear, ListView):
         context["year"] = ''.join([f'year={x}&' for x in self.request.GET.getlist("year")])
         context["genre"] = ''.join([f'genre={x}&' for x in self.request.GET.getlist("genre")])
         return context
-    
+
 
 class AddStarRating(View):
     """Добавление рейтинга фильму"""
@@ -103,9 +103,8 @@ class Search(GenreYear, ListView):
     def get_queryset(self):
         return Movie.objects.filter(title__icontains=self.request.GET.get("q"))
         # __icontains -> не учитывать регистр в поиске
-        print(request)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context["q"] = f'q={self.request.GET.get("q")}&'
-        return context 
+        return context

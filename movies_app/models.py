@@ -12,7 +12,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
@@ -27,11 +27,10 @@ class Actor(models.Model):
 
     def get_absolute_url(self):
         return reverse("actor_detail", kwargs={"slug": self.name})
-    
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Актёры и режиссёры"
         verbose_name_plural = "Актёры и режиссёры"
@@ -42,10 +41,10 @@ class Genre(models.Model):
     name = models.CharField("Жанр", max_length=150)
     description = models.TextField("Описание")
     url = models.SlugField(unique=True, max_length=160)
-   
+
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Жанр"
         verbose_name_plural = "Жанры"
@@ -85,7 +84,6 @@ class Movie(models.Model):
 
     def get_absolute_url(self):
         return reverse("movie_detail", kwargs={"slug": self.url})
-    
 
     class Meta():
         verbose_name = "Фильм"
@@ -150,4 +148,3 @@ class Reviews(models.Model):
     class Meta():
         verbose_name = "Рецензия"
         verbose_name_plural = "Рецензии"
-    

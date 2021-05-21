@@ -11,7 +11,7 @@ class ReviewForm(forms.ModelForm):
 
 
 class RatingForm(forms.ModelForm):
-    """Форма рейтинга"""  
+    """Форма рейтинга"""
     star = forms.ModelChoiceField(
         queryset=RatingStar.objects.all(), widget=forms.RadioSelect(), empty_label=None
     )

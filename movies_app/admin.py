@@ -9,10 +9,12 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "url")
     list_display_links = ("name", "id")
 
+
 class ReviewInline(admin.TabularInline):
     model = Reviews
     extra = 0
     readonly_fields = ("email", "name", "parent")
+
 
 class MovieShotsInline(admin.TabularInline):
     model = MovieShots
@@ -24,12 +26,13 @@ class MovieShotsInline(admin.TabularInline):
 
     get_image.short_description = "Изображение"
 
+
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "url", "draft")
-    list_filter = ("category","year")
+    list_filter = ("category", "year")
     search_fields = ("title", "category__name")
-    inlines = [MovieShotsInline ,ReviewInline]
+    inlines = [MovieShotsInline, ReviewInline]
     save_on_top = True
     save_as = True
     list_editable = ("draft",)
@@ -39,8 +42,8 @@ class MovieAdmin(admin.ModelAdmin):
             "fields": (("title", "tagline"), )
         }),
         ("Text and IMG", {
-            "classes":("collapse", ),
-            "fields": (("description", ("poster", "get_image")) )
+            "classes": ("collapse",),
+            "fields": (("description", ("poster", "get_image")))
         }),
         ("Dates and places", {
             "fields": (("year", "world_premiere", "country"), )
@@ -52,7 +55,7 @@ class MovieAdmin(admin.ModelAdmin):
             "fields": (("budget", "fees_in_usa", "fees_in_world"), )
         }),
         ("Options", {
-            "fields": (("url","trailer_url", "draft"), )
+            "fields": (("url", "trailer_url", "draft"), )
         })
     )
 
@@ -61,14 +64,17 @@ class MovieAdmin(admin.ModelAdmin):
 
     get_image.short_description = "Постер"
 
+
 @admin.register(Reviews)
 class ReviewsAdmin(admin.ModelAdmin):
     list_display = ("name", "email", "parent", "movie", "id",)
     readonly_fields = ("email", "name")
 
+
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ("name", "url")
+
 
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
@@ -81,9 +87,11 @@ class ActorAdmin(admin.ModelAdmin):
 
     get_image.short_description = "Изображение"
 
+
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
     list_display = ("movie", "ip", "star")
+
 
 @admin.register(MovieShots)
 class MovieShotsAdmin(admin.ModelAdmin):
@@ -95,6 +103,7 @@ class MovieShotsAdmin(admin.ModelAdmin):
         return mark_safe(f'<img src={obj.image.url} width="100" height="100"')
 
     get_image.short_description = "Изображение"
+
 
 admin.site.register(RatingStar)
 

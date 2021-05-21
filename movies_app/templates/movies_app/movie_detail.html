@@ -145,26 +145,26 @@
                             <label for="contactcomment" class="editContent"
                                    style="outline: none; cursor: inherit;">Ваш
                                 комментарий
-                                *</label>
+                                </label>
                             <textarea class="form-control border" rows="5" name="text"
-                                      id="contactcomment" required=""></textarea>
+                                      id="contactcomment" required></textarea>
                         </div>
                         <div class="d-sm-flex">
                             <div class="col-sm-6 form-group p-0 editContent"
                                  style="outline: none; cursor: inherit;">
                                 <label for="contactusername" class="editContent"
                                        style="outline: none; cursor: inherit;">Имя
-                                    *</label>
+                                    </label>
                                 <input type="text" class="form-control border" name="name"
-                                       id="contactusername" required="">
+                                       id="contactusername" value="{{ user.username }}" required>
                             </div>
                             <div class="col-sm-6 form-group ml-sm-3 editContent"
                                  style="outline: none; cursor: inherit;">
                                 <label for="contactemail" class="editContent"
                                        style="outline: none; cursor: inherit;">Email
-                                    *</label>
+                                    </label>
                                 <input type="email" class="form-control border" name="email"
-                                       id="contactemail" required="">
+                                       id="contactemail" required>
                             </div>
                         </div>
                         <button type="submit"
@@ -189,7 +189,7 @@
                     {% for rev in review.reviews_set.all %}
                         <div class="media mt-5 editContent">
                             <a class="pr-3" href="#">
-                                <img src="{% static 'images/te2.jpg' %}"" class="img-fluid " alt="image">
+                                <img src="{% static 'images/te2.jpg' %}" class="img-fluid" alt="image">
                             </a>
                             <div class="media-body">
                                 <h5 class="mt-0 editContent"
